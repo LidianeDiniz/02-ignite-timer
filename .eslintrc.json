@@ -1,15 +1,12 @@
 {
-    "extends": "@rocketseat/eslint-config/react",
-
-    
+  "extends": ["@rocketseat/eslint-config/react", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
     "prettier/prettier": [
-        "error",
-        {},
-        {
-          "fileInfoOptions": {
-            "withNodeModules": true
-          }
-        }
-      ]
-      
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
 }
