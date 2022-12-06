@@ -70,6 +70,6 @@ export const StartCountdownButton = styled.button`
   color: ${(props) => props.theme["gray-100"]};
 
   &:hover {
-    background: ${(props) => props.theme["gray-700"]};
+    background: ${(props) => props.theme["green-700"]};
   }
 `;
