@@ -21,7 +21,7 @@ gap: 0.5rem;
 display: flex;
 align-items: center;
 justify-content: center;
-color: &{(props) => props.theme['gray-100']};
+color: ${(props) => props.theme['gray-100']};
 font-size:1.125rem;
 font-weight: bold;
 flex-wrap: wrap;
@@ -35,7 +35,7 @@ const BaseInput = styled.input`
   font-weight: bold;
   font-size: 1.125rem;
   padding: 0 0.5rem;
-  color: &{(props) => props.theme['gray-100']};
+  color: ${(props) => props.theme['gray-100']};
   
 
   &::placeholder{
@@ -50,6 +50,9 @@ const BaseInput = styled.input`
 
 export const TaskInput = styled(BaseInput)`
 flex: 1;
+
+&::-webkit-calendar-picker-indicator {
+  display: none !import;
 `;
 
 export const MinutesAmountInput = styled(BaseInput)`
@@ -60,7 +63,7 @@ export const CountdownContainer = styled.div`
 font-family: 'Roboto Mono', monospace;
 font-size: 10rem;
 line-height: 8rem;
-color: &{(props) => props.theme['gray-100']};
+color: ${(props) => props.theme['gray-100']};
 
 display: flex;
 gap: 1rem;
