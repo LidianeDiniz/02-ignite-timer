@@ -1,4 +1,5 @@
 import { Play } from "phosphor-react";
+import { useForm } from "react-hook-form";
 import {
   HomeConatiner,
   CountdownContainer,
@@ -9,16 +10,41 @@ import {
   MinutesAmountInput,
 } from "./styles";
 
+/*
+O register recebe o nome do input e retorna alguns métodos que utilizamos para trabalhar com inputs. 
+Exemplo:
+
+function register(name: string){
+  return{
+    onChange: () => void;
+    onBlur: () => void;
+    onFocus: () => void;
+    e muitos outros
+  }
+
+  }
+*/
+
 export function Home() {
+  const { register, handleSubmit, watch } = useForm();
+
+  function handleCreateNewCycle(data: any) {
+    console.log(data);
+  }
+
+  const task = watch("task");
+  const isSubmitDisabled = !task;
+
   return (
     <HomeConatiner>
-      <form action="">
+      <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
         <FormContainer>
           <label htmlFor="task">Vou trabalhar em </label>
           <TaskInput
             id="task"
             list="task-sugestions"
             placeholder="Dê um nome para seu projeto"
+            {...register("task")}
           />
 
           <datalist id="task-sugestions">
@@ -36,6 +62,9 @@ export function Home() {
             step={5}
             min={5}
             max={60}
+            {...register("minutesAmount", { valueAsNumber: true })}
+
+            /* {valueAsNumber: true}  é um objeto de configurações ele vai transformar este input em number passa a aceitar somente números */
           />
 
           <span>minutos.</span>
@@ -49,7 +78,7 @@ export function Home() {
           <span>0</span>
         </CountdownContainer>
 
-        <StartCountdownButton type="submit" disabled>
+        <StartCountdownButton disabled={isSubmitDisabled} type="submit">
           <Play size={24} />
           Começar
         </StartCountdownButton>
